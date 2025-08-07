@@ -17,7 +17,7 @@ export const cursor = () => {
         const links = document.querySelectorAll('.focus');
         const headings = document.querySelectorAll('.focus2');
 
-        applyCursorEffect(links, 5);
-        applyCursorEffect(headings, 15);
+        applyCursorEffect(links, 2.5);
+        applyCursorEffect(headings, 4);
     });
 };

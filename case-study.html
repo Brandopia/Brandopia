@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brandopia | Case Study</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
+    <!-- CSS -->
+    <!-- Locomotive -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
+    />
+    <!-- Swiper JS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <!-- Custom -->
+    <link rel="stylesheet" href="css/main.css" />
+    <style>
+      /* Case Study Specific Styles */
+      .case-study-hero {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        text-align: center;
+        z-index: 2;
+      }
+
+      .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          45deg,
+          #151515 0%,
+          #1e1e1e 50%,
+          #151515 100%
+        );
+        z-index: 1;
+      }
+
+      .floating-elements {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      .floating-element {
+        position: absolute;
+        background: #e5ff00;
+        border-radius: 50%;
+        opacity: 0.1;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .floating-element:nth-child(1) {
+        width: 20px;
+        height: 20px;
+        top: 20%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .floating-element:nth-child(2) {
+        width: 15px;
+        height: 15px;
+        top: 60%;
+        right: 20%;
+        animation-delay: 2s;
+      }
+
+      .floating-element:nth-child(3) {
+        width: 25px;
+        height: 25px;
+        bottom: 30%;
+        left: 70%;
+        animation-delay: 4s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+        }
+      }
+
+      .project-showcase {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin: 4rem 0;
+      }
+
+      .project-card {
+        background: #1e1e1e;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(229, 255, 0, 0.1);
+      }
+
+      .project-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .project-card:hover .project-image {
+        transform: scale(1.05);
+      }
+
+      .project-info {
+        padding: 2rem;
+      }
+
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      .tech-tag {
+        background: #e5ff00;
+        color: #151515;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .design-system {
+        background: #1e1e1e;
+        border-radius: 20px;
+        padding: 3rem;
+        margin: 4rem 0;
+      }
+
+      .color-palette {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .color-swatch {
+        aspect-ratio: 1;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        transition: transform 0.3s ease;
+      }
+
+      .color-swatch:hover {
+        transform: scale(1.1);
+      }
+
+      .color-dark {
+        background: #151515;
+        color: #fff;
+      }
+      .color-dark2 {
+        background: #1e1e1e;
+        color: #fff;
+      }
+      .color-light {
+        background: #fff;
+        color: #151515;
+      }
+      .color-primary {
+        background: #e5ff00;
+        color: #151515;
+      }
+
+      .typography-showcase {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin: 3rem 0;
+        align-items: center;
+      }
+
+      .font-display {
+        background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+        padding: 3rem;
+        border-radius: 20px;
+        text-align: center;
+      }
+
+      .screenshot-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 4rem 0;
+      }
+
+      .screenshot-item {
+        background: #1e1e1e;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .screenshot-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .screenshot-placeholder {
+        width: 100%;
+        height: 200px;
+        background: linear-gradient(45deg, #2a2a2a, #3a3a3a);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #e5ff00;
+        font-size: 1.2rem;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin: 4rem 0;
+      }
+
+      .feature-card {
+        background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+        padding: 2.5rem;
+        border-radius: 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .feature-card:hover {
+        border-color: #e5ff00;
+        box-shadow: 0 15px 30px rgba(229, 255, 0, 0.1);
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: #e5ff00;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 1.5rem;
+        color: #151515;
+      }
+
+      .process-timeline {
+        position: relative;
+        margin: 4rem 0;
+      }
+
+      .timeline-line {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #e5ff00;
+        transform: translateX(-50%);
+      }
+
+      .timeline-item {
+        display: flex;
+        margin: 3rem 0;
+        position: relative;
+      }
+
+      .timeline-item:nth-child(odd) {
+        flex-direction: row-reverse;
+      }
+
+      .timeline-content {
+        width: 45%;
+        background: #1e1e1e;
+        padding: 2rem;
+        border-radius: 15px;
+        position: relative;
+      }
+
+      .timeline-number {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        background: #e5ff00;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #151515;
+        font-weight: bold;
+        z-index: 2;
+      }
+
+      .stats-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin: 4rem 0;
+        text-align: center;
+      }
+
+      .stat-card {
+        background: linear-gradient(135deg, #e5ff00, #b8cc00);
+        color: #151515;
+        padding: 3rem 2rem;
+        border-radius: 20px;
+        transition: transform 0.3s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.05;
+      }
+
+      .bg-particle {
+        position: absolute;
+        background: #e5ff00;
+        border-radius: 50%;
+        animation: particle-float 8s infinite ease-in-out;
+      }
+
+      @keyframes particle-float {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px);
+          opacity: 0.3;
+        }
+        50% {
+          transform: translateY(-30px) translateX(20px);
+          opacity: 0.8;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .project-showcase,
+        .typography-showcase {
+          grid-template-columns: 1fr;
+        }
+
+        .timeline-item {
+          flex-direction: column;
+        }
+
+        .timeline-content {
+          width: 100%;
+        }
+
+        .timeline-line {
+          display: none;
+        }
+      }
+
+      /* Scroll animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slide-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.6s ease;
+      }
+
+      .slide-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .slide-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.6s ease;
+      }
+
+      .slide-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Animated Background Particles -->
+    <div class="animated-bg">
+      <div
+        class="bg-particle"
+        style="
+          top: 10%;
+          left: 10%;
+          width: 4px;
+          height: 4px;
+          animation-delay: 0s;
+        "
+      ></div>
+      <div
+        class="bg-particle"
+        style="
+          top: 20%;
+          right: 15%;
+          width: 6px;
+          height: 6px;
+          animation-delay: 2s;
+        "
+      ></div>
+      <div
+        class="bg-particle"
+        style="
+          bottom: 30%;
+          left: 20%;
+          width: 3px;
+          height: 3px;
+          animation-delay: 4s;
+        "
+      ></div>
+      <div
+        class="bg-particle"
+        style="
+          top: 60%;
+          right: 30%;
+          width: 5px;
+          height: 5px;
+          animation-delay: 1s;
+        "
+      ></div>
+      <div
+        class="bg-particle"
+        style="
+          bottom: 20%;
+          right: 10%;
+          width: 4px;
+          height: 4px;
+          animation-delay: 3s;
+        "
+      ></div>
+    </div>
+
+    <!-- Intro -->
+    <section class="intro">
+      <div class="intro_wrapper">
+        <h1 class="inFix">Brandopia</h1>
+        <h1 class="inFill">Brandopia</h1>
+      </div>
+    </section>
+
+    <!-- fixed canvas cursor -->
+    <div class="canvas-wrapper">
+      <canvas id="fluid"></canvas>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Navbar -->
+    <nav>
+      <div id="container">
+        <a href="index.html">
+          <h2>Brandopia</h2>
+        </a>
+
+        <div class="hamburger">
+          <p>menu</p>
+          <div class="toggle focus" data-magnetic>
+            <span class="top"></span>
+            <span class="bottom"></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Fullscreen Nav-->
+    <div class="menu">
+      <div id="container">
+        <div class="left">
+          <a href="about.html" data-text="About Us">About Us</a>
+          <a href="works.html" data-text="Work">Work</a>
+          <a href="service.html" data-text="Services">Services</a>
+          <a href="team.html" data-text="Team">Team</a>
+          <a href="contact.html" data-text="Contact">Contact</a>
+          <a href="case-study.html" data-text="case study">case study</a>
+        </div>
+        <div class="right">
+          <a href="mailto:info@Brandopia.com" class="focus"
+            >info@Brandopia.com</a
+          >
+          <a href="tel:+011234567890" class="focus">+01 1234567890</a>
+          <div class="social_cnt">
+            <a href="https://www.instagram.com" target="_blank">
+              <img
+                class="focus"
+                src="assets/instagram.svg"
+                alt="instagram"
+                loading="lazy"
+                data-magnetic
+              />
+            </a>
+            <a href="https://www.facebook.com" target="_blank">
+              <img
+                class="focus"
+                src="assets/facebook.svg"
+                alt="facebook"
+                loading="lazy"
+                data-magnetic
+              />
+            </a>
+            <a href="https://www.linkedin.com" target="_blank">
+              <img
+                class="focus"
+                src="assets/linkedin.svg"
+                alt="linkedin"
+                loading="lazy"
+                data-magnetic
+              />
+            </a>
+            <a href="https://dribbble.com" target="_blank">
+              <img
+                class="focus"
+                src="assets/dribble.svg"
+                alt="dribble"
+                loading="lazy"
+                data-magnetic
+              />
+            </a>
+            <a href="https://www.behance.net" target="_blank">
+              <img
+                class="focus"
+                src="assets/behance.svg"
+                alt="behance"
+                loading="lazy"
+                data-magnetic
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu_overlay"></div>
+
+    <!-- Scrollable Content -->
+    <div id="main">
+      <!-- Case Study Hero -->
+      <section class="case-study-hero">
+        <div class="hero-bg"></div>
+        <div class="floating-elements">
+          <div class="floating-element"></div>
+          <div class="floating-element"></div>
+          <div class="floating-element"></div>
+        </div>
+        <div class="hero-content fade-in">
+          <div id="container">
+            <div class="heading_cnt">
+              <div class="heading">
+                <h1 class="fade">case study</h1>
+                <h1 class="fill">case study</h1>
+              </div>
+            </div>
+            <h5 class="mT2">
+              Showcasing our creative process, design systems, and innovative
+              solutions that transform brands into digital experiences.
+            </h5>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Overview -->
+      <section class="fade-in">
+        <div id="container">
+          <div class="heading_cnt mT5">
+            <div class="heading">
+              <h1 class="fade">project overview</h1>
+              <h1 class="fill">project overview</h1>
+            </div>
+          </div>
+
+          <div class="project-showcase">
+            <div class="project-card slide-left">
+              <img
+                src="assets/work1.png"
+                alt="E-commerce Platform"
+                class="project-image"
+                loading="lazy"
+              />
+              <div class="project-info">
+                <h4>E-commerce Platform</h4>
+                <p>
+                  Modern shopping experience with advanced filtering, payment
+                  integration, and mobile-first design.
+                </p>
+                <div class="tech-stack">
+                  <span class="tech-tag">React</span>
+                  <span class="tech-tag">Node.js</span>
+                  <span class="tech-tag">MongoDB</span>
+                  <span class="tech-tag">Stripe</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card slide-right">
+              <img
+                src="assets/work2.jpg"
+                alt="Brand Identity"
+                class="project-image"
+                loading="lazy"
+              />
+              <div class="project-info">
+                <h4>Brand Identity System</h4>
+                <p>
+                  Complete brand overhaul including logo design, color palette,
+                  and brand guidelines for consistency.
+                </p>
+                <div class="tech-stack">
+                  <span class="tech-tag">Illustrator</span>
+                  <span class="tech-tag">Figma</span>
+                  <span class="tech-tag">After Effects</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card slide-left">
+              <img
+                src="assets/work3.jpg"
+                alt="Mobile App"
+                class="project-image"
+                loading="lazy"
+              />
+              <div class="project-info">
+                <h4>Mobile Application</h4>
+                <p>
+                  Cross-platform mobile app with intuitive UX, real-time
+                  features, and seamless performance.
+                </p>
+                <div class="tech-stack">
+                  <span class="tech-tag">React Native</span>
+                  <span class="tech-tag">Firebase</span>
+                  <span class="tech-tag">Redux</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card slide-right">
+              <img
+                src="assets/work4.png"
+                alt="Web Platform"
+                class="project-image"
+                loading="lazy"
+              />
+              <div class="project-info">
+                <h4>SaaS Web Platform</h4>
+                <p>
+                  Enterprise-grade dashboard with analytics, user management,
+                  and advanced reporting capabilities.
+                </p>
+                <div class="tech-stack">
+                  <span class="tech-tag">Vue.js</span>
+                  <span class="tech-tag">Laravel</span>
+                  <span class="tech-tag">MySQL</span>
+                  <span class="tech-tag">AWS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Design System -->
+      <section class="fade-in">
+        <div id="container">
+          <div class="heading_cnt mT5">
+            <div class="heading">
+              <h1 class="fade">design system</h1>
+              <h1 class="fill">design system</h1>
+            </div>
+          </div>
+
+          <div class="design-system">
+            <h4>Color Palette</h4>
+            <p class="mT1">
+              Our carefully curated color system ensures consistency and
+              accessibility across all touchpoints.
+            </p>
+
+            <div class="color-palette">
+              <div class="color-swatch color-dark">
+                <div>
+                  <div>#151515</div>
+                  <small>Primary Dark</small>
+                </div>
+              </div>
+              <div class="color-swatch color-dark2">
+                <div>
+                  <div>#1E1E1E</div>
+                  <small>Secondary Dark</small>
+                </div>
+              </div>
+              <div class="color-swatch color-light">
+                <div>
+                  <div>#FFFFFF</div>
+                  <small>Light</small>
+                </div>
+              </div>
+              <div class="color-swatch color-primary">
+                <div>
+                  <div>#E5FF00</div>
+                  <small>Accent Yellow</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Typography -->
+      <section class="fade-in">
+        <div id="container">
+          <div class="typography-showcase">
+            <div>
+              <h4>Typography</h4>
+              <p class="mT1">
+                Sansation font family provides modern, clean aesthetics with
+                excellent readability across all devices and platforms.
+              </p>
+              <div class="mT2">
+                <h5>Font Weights</h5>
+                <p style="font-weight: 300" class="mT1">
+                  Light (300) - For subtle text
+                </p>
+                <p style="font-weight: 400" class="mT05">
+                  Regular (400) - Body text
+                </p>
+                <p style="font-weight: 700" class="mT05">
+                  Bold (700) - Headlines
+                </p>
+              </div>
+            </div>
+
+            <div class="font-display slide-right">
+              <h1 style="font-size: 4rem; margin-bottom: 1rem">Aa</h1>
+              <h4>Sansation</h4>
+              <p class="smallT mT1">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+              <p class="smallT">abcdefghijklmnopqrstuvwxyz</p>
+              <p class="smallT">1234567890!@#$%^&*()</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Screenshots Gallery -->
+      <section class="fade-in">
+        <div id="container">
+          <div class="heading_cnt mT5">
+            <div class="heading">
+              <h1 class="fade">application showcase</h1>
+              <h1 class="fill">application showcase</h1>
+            </div>
+          </div>
+
+          <div class="screenshot-gallery">
+            <div class="screenshot-item">
+              <img
+                src="assets/work5.png"
+                alt="Desktop View"
+                style="width: 100%; height: 200px; object-fit: cover"
+                loading="lazy"
+              />
+              <div style="padding: 1.5rem">
+                <h5>Desktop Interface</h5>
+                <p class="smallT mT05">
+                  Full-featured desktop experience with advanced functionality
+                </p>
+              </div>
+            </div>
+
+            <div class="screenshot-item">
+              <img
+                src="assets/work6.jpg"
+                alt="Mobile View"
+                style="width: 100%; height: 200px; object-fit: cover"
+                loading="lazy"
+              />
+              <div style="padding: 1.5rem">
+                <h5>Mobile Experience</h5>
+                <p class="smallT mT05">
+                  Optimized mobile interface with touch-friendly interactions
+                </p>
+              </div>
+            </div>
+
+            <div class="screenshot-item">
+              <img
+                src="assets/work7.jpg"
+                alt="Tablet View"
+                style="width: 100%; height: 200px; object-fit: cover"
+                loading="lazy"
+              />
+              <div style="padding: 1.5rem">
+                <h5>Tablet Layout</h5>
+                <p class="smallT mT05">
+                  Adaptive design that scales perfectly on tablet devices
+                </p>
+              </div>
+            </div>
+
+            <div class="screenshot-item">
+              <div class="screenshot-placeholder">🎨 Interactive Prototype</div>
+              <div style="padding: 1.5rem">
+                <h5>Interactive Elements</h5>
+                <p class="smallT mT05">
+                  Engaging animations and micro-interactions
+                </p>
+              </div>
+            </div>
+
+            <div class="screenshot-item">
+              <img
+                src="assets/work8.jpg"
+                alt="Dashboard"
+                style="width: 100%; height: 200px; object-fit: cover"
+                loading="lazy"
+              />
+              <div style="padding: 1.5rem">
+                <h5>Dashboard Analytics</h5>
+                <p class="smallT mT05">
+                  Comprehensive data visualization and reporting tools
+                </p>
+              </div>
+            </div>
+
+            <div class="screenshot-item">
+              <img
+                src="assets/work9.jpg"
+                alt="User Interface"
+                style="width: 100%; height: 200px; object-fit: cover"
+                loading="lazy"
+              />
+              <div style="padding: 1.5rem">
+                <h5>User Management</h5>
+                <p class="smallT mT05">
+                  Intuitive user interface with role-based access control
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Key Features -->
+      <section class="fade-in">
+        <div id="container">
+          <div class="heading_cnt mT5">
+            <div class="heading">
+              <h1 class="fade">key features</h1>
+              <h1 class="fill">key features</h1>
+            </div>
+          </div>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">📱</div>
+              <h5>Responsive Design</h5>
+              <p class="mT1">
+                Seamless experience across all devices and screen sizes with
+                fluid layouts.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">⚡</div>
+              <h5>Performance Optimized</h5>
+              <p class="mT1">
+                Lightning-fast loading times and smooth animations for optimal
+                user experience.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">🎨</div>
+              <h5>Custom Animations</h5>
+              <p class="mT1">
+                Engaging micro-interactions and smooth transitions that enhance
+                usability.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">🔒</div>
+              <h5>Secure & Scalable</h5>
+              <p class="mT1">
+                Enterprise-grade security with scalable architecture for future
+                growth.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">📊</div>
+              <h5>Analytics Integration</h5>
+              <p class="mT1">
+                Comprehensive tracking and reporting with actionable insights.
+              </p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">🌐</div>
+              <h5>Cross-Platform</h5>
+              <p class="mT1">
+                Consistent functionality across web, mobile, and desktop
+                platforms.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Development Process -->
+      <section class="fade-in">
+        <div id="container">
+          <div class="heading_cnt mT5">
+            <div class="heading">
+              <h1 class="fade">development process</h1>
+              <h1 class="fill">development process</h1>
+            </div>
+          </div>
+
+          <div class="process-timeline">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-item">
+              <div class="timeline-content slide-left">
+                <h4>Discovery & Research</h4>
+                <p class="mT1">
+                  In-depth analysis of client requirements, user needs, and
+                  market research to establish project foundation.
+                </p>
+              </div>
+              <div class="timeline-number">1</div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-content slide-right">
+                <h4>Design & Prototyping</h4>
+                <p class="mT1">
+                  Creating wireframes, mockups, and interactive prototypes to
+                  visualize the user experience.
+                </p>
+              </div>
+              <div class="timeline-number">2</div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-content slide-left">
+                <h4>Development & Testing</h4>
+                <p class="mT1">
+                  Agile development approach with continuous testing and quality
+                  assurance throughout the process.
+                </p>
+              </div>
+              <div class="timeline-number">3</div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-content slide-right">
+                <h4>Launch & Optimization</h4>
+                <p class="mT1">
+                  Deployment, performance monitoring, and ongoing optimization
+                  based on real user feedback.
+                </p>
+              </div>
+              <div class="timeline-number">4</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Statistics -->
+      <section class="fade-in">
+        <div id="container">
+          <div class="heading_cnt mT5">
+            <div class="heading">
+              <h1 class="fade">project impact</h1>
+              <h1 class="fill">project impact</h1>
+            </div>
+          </div>
+
+          <div class="stats-section">
+            <div class="stat-card">
+              <div class="stat-number">250%</div>
+              <h5>Increase in User Engagement</h5>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-number">95%</div>
+              <h5>Client Satisfaction Rate</h5>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-number">40%</div>
+              <h5>Faster Load Times</h5>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-number">180%</div>
+              <h5>Conversion Rate Boost</h5>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Technologies Used -->
+      <section class="fade-in">
+        <div id="container">
+          <div class="heading_cnt mT5">
+            <div class="heading">
+              <h1 class="fade">technologies</h1>
+              <h1 class="fill">technologies</h1>
+            </div>
+          </div>
+
+          <div class="design-system">
+            <h4>Tech Stack</h4>
+            <p class="mT1">
+              Cutting-edge technologies and frameworks used to deliver
+              exceptional results.
+            </p>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+                margin-top: 2rem;
+              "
+            >
+              <div>
+                <h5 style="color: #e5ff00; margin-bottom: 1rem">Frontend</h5>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem">
+                  <span class="tech-tag">React.js</span>
+                  <span class="tech-tag">Vue.js</span>
+                  <span class="tech-tag">TypeScript</span>
+                  <span class="tech-tag">SCSS</span>
+                  <span class="tech-tag">GSAP</span>
+                  <span class="tech-tag">Three.js</span>
+                </div>
+              </div>
+
+              <div>
+                <h5 style="color: #e5ff00; margin-bottom: 1rem">Backend</h5>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem">
+                  <span class="tech-tag">Node.js</span>
+                  <span class="tech-tag">Laravel</span>
+                  <span class="tech-tag">Python</span>
+                  <span class="tech-tag">MongoDB</span>
+                  <span class="tech-tag">PostgreSQL</span>
+                  <span class="tech-tag">Redis</span>
+                </div>
+              </div>
+
+              <div>
+                <h5 style="color: #e5ff00; margin-bottom: 1rem">Mobile</h5>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem">
+                  <span class="tech-tag">React Native</span>
+                  <span class="tech-tag">Flutter</span>
+                  <span class="tech-tag">Swift</span>
+                  <span class="tech-tag">Kotlin</span>
+                </div>
+              </div>
+
+              <div>
+                <h5 style="color: #e5ff00; margin-bottom: 1rem">
+                  Cloud & DevOps
+                </h5>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem">
+                  <span class="tech-tag">AWS</span>
+                  <span class="tech-tag">Docker</span>
+                  <span class="tech-tag">Kubernetes</span>
+                  <span class="tech-tag">CI/CD</span>
+                  <span class="tech-tag">Netlify</span>
+                  <span class="tech-tag">Vercel</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <div id="container">
+          <div class="heading_cnt">
+            <div class="heading">
+              <h1 class="fade">
+                ready to start <br />
+                your project?
+              </h1>
+              <h1 class="fill">
+                ready to start <br />
+                your project?
+              </h1>
+            </div>
+            <a href="contact.html" class="btn focus" data-magnetic>
+              <span>Let's Collaborate</span>
+            </a>
+          </div>
+
+          <div class="wrapper focus mT5">
+            <a
+              href="https://www.instagram.com"
+              target="_blank"
+              class="socialLink"
+            >
+              <h5>Instagram</h5>
+              <img src="assets/instagram.svg" alt="Instagram" loading="lazy" />
+            </a>
+            <a
+              href="https://www.facebook.com"
+              target="_blank"
+              class="socialLink"
+            >
+              <h5>Facebook</h5>
+              <img src="assets/facebook.svg" alt="Facebook" loading="lazy" />
+            </a>
+            <a
+              href="https://www.linkedin.com"
+              target="_blank"
+              class="socialLink"
+            >
+              <h5>Linkedin</h5>
+              <img src="assets/linkedin.svg" alt="Linkedin" loading="lazy" />
+            </a>
+            <a
+              href="https://www.behance.net"
+              target="_blank"
+              class="socialLink"
+            >
+              <h5>Behance</h5>
+              <img src="assets/behance.svg" alt="Behance" loading="lazy" />
+            </a>
+            <a
+              href="https://www.dribble.com"
+              target="_blank"
+              class="socialLink"
+            >
+              <h5>Dribble</h5>
+              <img src="assets/dribble.svg" alt="dribbble" loading="lazy" />
+            </a>
+          </div>
+
+          <div class="copyrights mT2">
+            <p>©2024 Brandopia</p>
+            <p>
+              All Images are used from Behance, Dribbble by their own creators.
+            </p>
+          </div>
+        </div>
+        <div class="full mT5 focus">
+          <h1>Brandopia</h1>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/main.js" type="module" defer></script>
+
+    <!-- Custom animation script for case study page -->
+    <script>
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animated elements
+      document
+        .querySelectorAll(".fade-in, .slide-left, .slide-right")
+        .forEach((el) => {
+          observer.observe(el);
+        });
+
+      // Particle animation for background
+      function createParticle() {
+        const particle = document.createElement("div");
+        particle.className = "bg-particle";
+        particle.style.left = Math.random() * 100 + "%";
+        particle.style.top = Math.random() * 100 + "%";
+        particle.style.width = Math.random() * 6 + 2 + "px";
+        particle.style.height = particle.style.width;
+        particle.style.animationDelay = Math.random() * 8 + "s";
+
+        document.querySelector(".animated-bg").appendChild(particle);
+
+        setTimeout(() => {
+          particle.remove();
+        }, 8000);
+      }
+
+      // Create particles periodically
+      setInterval(createParticle, 2000);
+
+      // Animate stats on scroll
+      const statNumbers = document.querySelectorAll(".stat-number");
+      const animateStats = (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const target = entry.target;
+            const finalValue = target.textContent;
+            const isPercentage = finalValue.includes("%");
+            const numValue = parseInt(finalValue);
+
+            let current = 0;
+            const increment = numValue / 50;
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= numValue) {
+                current = numValue;
+                clearInterval(timer);
+              }
+              target.textContent =
+                Math.floor(current) + (isPercentage ? "%" : "");
+            }, 30);
+          }
+        });
+      };
+
+      const statsObserver = new IntersectionObserver(
+        animateStats,
+        observerOptions
+      );
+      statNumbers.forEach((stat) => statsObserver.observe(stat));
+    </script>
+  </body>
+</html>

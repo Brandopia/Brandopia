@@ -11,7 +11,7 @@ export function initFluid() {
     PRESSURE: 0.2,
     PRESSURE_ITERATIONS: 10,
     CURL: 2,
-    SPLAT_RADIUS: 0.3,
+    SPLAT_RADIUS: 0.15,
     SPLAT_FORCE: 6000,
     SHADING: true,
     COLOR_UPDATE_SPEED: 6,

@@ -9,8 +9,23 @@ import { marquee } from "./marquee.js";
 import { mouseMoveDribble } from "./dribbleMousemove.js";
 
 
+// Check if we should show loader before page loads
+const currentPath = window.location.pathname;
+const isHomePage = currentPath === '/' || currentPath === '/index.html' || currentPath.endsWith('/index.html') || currentPath === '';
+const hasVisited = sessionStorage.getItem('brandopia-visited');
+
+// Hide loader immediately via CSS if it shouldn't show
+if (!isHomePage || hasVisited) {
+    const style = document.createElement('style');
+    style.textContent = '.intro { display: none !important; }';
+    document.head.appendChild(style);
+}
+
 window.onload = () => {
-    pageReveal();
+    if (isHomePage && !hasVisited) {
+        pageReveal();
+        sessionStorage.setItem('brandopia-visited', 'true');
+    }
 }
 
 LocomotiveJs();

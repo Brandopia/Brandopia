@@ -562,16 +562,19 @@ footer .full {
   opacity: 0.1;
 }
 footer .full h1 {
-  font-size: 22.1vw;
+  font-size: 5vw;
+  text-align: center;
+  word-break: break-word;
+  margin: 0;
 }
 
 .footerPTnone {
   padding-top: 0;
 }
 
-@media (max-width: 780px) {
-  footer #container .wrapper .socialLink {
-    padding: 1.4rem 0;
+@media (max-width: 768px) {
+  footer .full h1 {
+    font-size: 10vw;
   }
   footer #container .wrapper .socialLink img {
     width: 36px;
@@ -583,9 +586,9 @@ footer .full h1 {
     gap: 1rem;
   }
 }
-@media (max-width: 520px) {
-  footer {
-    padding-top: 8rem;
+@media (max-width: 768px) {
+  footer .full h1 {
+    font-size: 10vw;
   }
 }
 .parallax_img {
@@ -777,51 +780,64 @@ footer .full h1 {
     padding-bottom: 8rem;
   }
 }
-.clients #container .wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-.clients #container .wrapper h3 {
+/* Marquee logo slider styles */
+.client-logos-marquee {
+  overflow: hidden;
   width: 100%;
-  max-width: 900px;
-}
-.clients .swiper {
-  width: 100%;
-  height: 80vh;
-  max-height: 700px;
-  padding: 0 30px;
-}
-.clients .swiper .swiper-slide {
-  background: #1e1e1e;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  border: 1px solid #e5ff00;
-  border-radius: 20px;
-  padding: 4rem 2rem;
-  transition: all 0.3s ease-in-out;
-}
-.clients .swiper .swiper-slide .top p {
-  font-size: 1.3rem;
-}
-.clients .swiper .swiper-slide:hover {
-  border: 1px solid #1e1e1e;
+  position: relative;
+  margin-top: 2rem;
 }
 
-@media (max-width: 520px) {
-  .clients .swiper .swiper-slide {
-    padding: 3rem 2rem;
+.marquee-content {
+  display: flex;
+  flex-wrap: nowrap;      /* Prevent wrapping */
+  gap: 80px;              /* Increased spacing between logos */
+  align-items: center;
+  width: max-content;     /* Allow row to extend beyond container */
+  animation: scrollMarquee 25s linear infinite;
+}
+
+.marquee-content img {
+  height: 120px;          /* Increased logo size */
+  width: auto;
+  flex-shrink: 0;
+  white-space: nowrap;
+  opacity: 0.8;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.marquee-content img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+@media (max-width: 900px) {
+  .marquee-content img {
+    height: 80px;         /* Larger on tablets */
   }
-  .clients .swiper .swiper-slide .top p {
-    font-size: 4.2vw;
-  }
-  .clients .swiper .swiper-slide:hover {
-    border: 1px solid #1e1e1e;
+  .marquee-content {
+    gap: 40px;
   }
 }
+
+@media (max-width: 600px) {
+  .marquee-content img {
+    height: 60px;         /* Larger on mobile */
+  }
+  .marquee-content {
+    gap: 20px;
+  }
+}
+
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .dribbble {
   overflow: visible;
 }
@@ -1288,6 +1304,97 @@ footer .full h1 {
     max-height: 450px;
   }
 }
+/* Team Member Page Styles */
+.team_member_hero {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 4rem 0;
+}
+
+.team_member_hero .left {
+    flex: 1;
+}
+
+.team_member_hero .left h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.team_member_hero .left h3 {
+    font-size: 1.5rem;
+    color: #e5ff00;
+    margin-bottom: 1.5rem;
+}
+
+.team_member_hero .left p {
+    line-height: 1.6;
+    font-size: 1rem;
+    max-width: 600px;
+}
+
+.team_member_hero .social_links img {
+    width: 30px;
+    height: 30px;
+}
+
+.team_member_hero .right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.team_member_hero .parallax_img {
+    max-width: 400px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.team_member_hero .parallax_img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+}
+
+/* About Section */
+.team_about {
+    padding: 4rem 0;
+}
+
+.team_about h2 {
+    margin-bottom: 1rem;
+}
+
+.team_about p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.team_about ul {
+    padding-left: 1.2rem;
+    list-style: disc;
+}
+
+/* Back to Team */
+.back_to_team {
+    padding: 2rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .team_member_hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .team_member_hero .parallax_img {
+        max-width: 100%;
+    }
+}
+
+
+
 .services {
   margin-top: 12rem;
 }

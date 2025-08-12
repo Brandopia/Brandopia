@@ -1,61 +1,208 @@
 .services {
     margin-top: 12rem;
+    padding-bottom: 8rem;
 
     #container {
-        display: flex;
-        gap: 4rem;
-        overflow-y: hidden;
+        display: block;
+        width: 100%;
 
-        .sticky_scroll {
+        .heading_cnt {
             width: 100%;
-        }
-    }
-}
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-bottom: 4rem;
 
-.sticky_scrolling {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    overflow: hidden;
+            .heading {
+                width: 100%;
+            }
 
-    .card {
-        background: $dark2;
-        padding: 4rem 3rem;
-        border-radius: 25px;
-
-        h3 {
-            line-height: 80%;
+            h5 {
+                max-width: 900px;
+                width: 100%;
+            }
         }
 
-        p {
-            margin-top: 1rem;
-            opacity: .5;
+        .horizontal_scroll {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 2rem 0;
+            width: 100%;
+
+            // Show scrollbar
+            &::-webkit-scrollbar {
+                height: 8px;
+            }
+
+            &::-webkit-scrollbar-track {
+                background: rgba(255, 255, 255, 0.1);
+                border-radius: 4px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: $primary;
+                border-radius: 4px;
+                
+                &:hover {
+                    background: lighten($primary, 10%);
+                }
+            }
+
+            .card {
+                background: $dark2;
+                padding: 4rem 3rem;
+                border-radius: 25px;
+                min-width: 400px;
+                max-width: 400px;
+                flex-shrink: 0;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                transition: all 0.3s ease;
+                position: relative;
+
+                &:hover {
+                    border-color: $primary;
+                    transform: translateY(-8px);
+                    box-shadow: 0 20px 40px rgba(229, 255, 0, 0.1);
+                }
+
+                // Main title (h3) styling - works for both sections
+                h3 {
+                    line-height: 80%;
+                    color: $primary;
+                    font-size: 2.5rem;
+                    margin-bottom: 1rem;
+
+                    // When h3 has mT2 class (process section)
+                    &.mT2 {
+                        margin-top: 1rem;
+                    }
+                }
+
+                // Process step number (h5 before h3)
+                h5 {
+                    color: $primary;
+                    font-size: 1rem;
+                    opacity: 0.8;
+                    margin-bottom: 0.5rem;
+                    
+                    // First h5 in process section (step number)
+                    &:first-child {
+                        margin-bottom: 0;
+                    }
+                }
+
+                p {
+                    margin-top: 1rem;
+                    opacity: 0.7;
+                    line-height: 1.6;
+                    color: #fff;
+                }
+
+                // Category tags container (for "We are good at" section)
+                .cat {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.8rem;
+                    margin-top: 1.5rem;
+
+                    h5 {
+                        background: rgba(229, 255, 0, 0.1);
+                        padding: 0.5rem 1rem;
+                        border-radius: 20px;
+                        font-size: 0.9rem;
+                        border: 1px solid rgba(229, 255, 0, 0.3);
+                        margin: 0;
+                        opacity: 1;
+                        color: $primary;
+                    }
+                }
+            }
         }
     }
 }
 
 //====================================== Breakpoints
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
     .services {
         #container {
-            gap: 4rem;
-            flex-direction: column;
+            .horizontal_scroll {
+                .card {
+                    min-width: 350px;
+                    max-width: 350px;
+                    padding: 3rem 2.5rem;
+
+                    h3 {
+                        font-size: 2.2rem;
+                    }
+                }
+            }
         }
     }
+}
 
-    .sticky_scrolling {
-        gap: 1.6rem;
+@media (max-width: 768px) {
+    .services {
+        #container {
+            .horizontal_scroll {
+                padding: 1rem 0;
+
+                .card {
+                    min-width: 300px;
+                    max-width: 300px;
+                    padding: 3rem 2rem;
+
+                    h3 {
+                        font-size: 2rem;
+                    }
+
+                    .cat h5 {
+                        font-size: 0.8rem;
+                        padding: 0.4rem 0.8rem;
+                    }
+                }
+            }
+        }
     }
 }
 
 @media (max-width: 520px) {
     .services {
         margin-top: 8rem;
+        padding-bottom: 6rem;
 
-        .sticky_scrolling {
-            .card {
-                padding: 3rem 2rem;
+        #container {
+            .heading_cnt {
+                margin-bottom: 3rem;
+            }
+
+            .horizontal_scroll {
+                gap: 1.5rem;
+                padding: 1rem 0;
+
+                .card {
+                    min-width: 280px;
+                    max-width: 280px;
+                    padding: 2.5rem 1.5rem;
+
+                    h3 {
+                        font-size: 1.8rem;
+                    }
+
+                    p {
+                        font-size: 0.9rem;
+                    }
+
+                    .cat {
+                        gap: 0.6rem;
+
+                        h5 {
+                            font-size: 0.75rem;
+                            padding: 0.3rem 0.6rem;
+                        }
+                    }
+                }
             }
         }
     }

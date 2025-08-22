@@ -10,7 +10,7 @@ body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  background: #151515;
+  background: url('../assets/bg.png') center center/cover no-repeat, #151515;
   color: #fff;
   font-family: "Sansation", sans-serif;
   overscroll-behavior: none;
@@ -233,9 +233,16 @@ section {
 .intro .intro_wrapper {
   position: relative;
   overflow: hidden;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .intro .intro_wrapper .inFix {
   opacity: 0.2;
+  font-size: 16vw;
+  white-space: nowrap;
+  text-align: center;
 }
 .intro .intro_wrapper .inFill {
   position: absolute;
@@ -244,6 +251,9 @@ section {
   top: 0%;
   left: 0%;
   overflow: hidden;
+  font-size: 16vw;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .canvas-wrapper {
@@ -540,9 +550,18 @@ footer .full {
   height: 16vw;
   overflow: hidden;
   opacity: 0.1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
 }
 footer .full h1 {
-  font-size: 22.1vw;
+  font-size: 16vw;
+  white-space: nowrap;
+  width: 100vw;
+  text-align: center;
+  transform: scaleX(1);
 }
 
 .footerPTnone {
@@ -563,9 +582,44 @@ footer .full h1 {
     gap: 1rem;
   }
 }
+@media (max-width: 768px) {
+  footer .full {
+    height: 14vw;
+  }
+  footer .full h1 {
+    font-size: 14vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro .intro_wrapper .inFix {
+    font-size: 14vw;
+  }
+  .intro .intro_wrapper .inFill {
+    font-size: 14vw;
+  }
+}
+
 @media (max-width: 520px) {
   footer {
     padding-top: 8rem;
+  }
+  
+  footer .full {
+    height: 12vw;
+  }
+  footer .full h1 {
+    font-size: 12vw;
+    letter-spacing: -0.01em;
+  }
+  
+  .intro .intro_wrapper .inFix {
+    font-size: 12vw;
+    letter-spacing: -0.01em;
+  }
+  .intro .intro_wrapper .inFill {
+    font-size: 12vw;
+    letter-spacing: -0.01em;
   }
 }
 .parallax_img {
@@ -790,6 +844,59 @@ footer .full h1 {
   border: 1px solid #1e1e1e;
 }
 
+/* Client Logos Marquee */
+.client-logos-marquee {
+  width: 100%;
+  overflow: hidden;
+  padding: 3rem 0;
+  margin: 2rem 0;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  white-space: nowrap;
+  animation: marqueeScroll 30s linear infinite;
+}
+
+.marquee-content img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0.7);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.marquee-content img:hover {
+  filter: brightness(1);
+  transform: scale(1.1);
+}
+
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .client-logos-marquee {
+    padding: 2rem 0;
+  }
+  
+  .marquee-content {
+    gap: 3rem;
+  }
+  
+  .marquee-content img {
+    height: 50px;
+  }
+}
+
 @media (max-width: 520px) {
   .clients .swiper .swiper-slide {
     padding: 3rem 2rem;
@@ -799,6 +906,18 @@ footer .full h1 {
   }
   .clients .swiper .swiper-slide:hover {
     border: 1px solid #1e1e1e;
+  }
+  
+  .client-logos-marquee {
+    padding: 1.5rem 0;
+  }
+  
+  .marquee-content {
+    gap: 2rem;
+  }
+  
+  .marquee-content img {
+    height: 40px;
   }
 }
 .dribbble {
